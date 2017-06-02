@@ -14,7 +14,7 @@ class _PhantomAssets(_BasePhantom):
         if asset_id is None:
             raise ValueError("asset_id is required")
 
-        url = os.path.join(self.endpoint_url, asset_id)
+        url = os.path.join(self.endpoint_url, str(asset_id))
         return self.__make_rest_request__(url, "GET")
 
     def get_all_assets(self):
@@ -22,4 +22,5 @@ class _PhantomAssets(_BasePhantom):
         return self.__make_rest_request__(url, "GET")
 
     def create_asset(self, data):
-        raise NotImplementedError()
+        url = self.endpoint_url
+        return self.__make_rest_request__(url, "POST", data=data)

@@ -1,13 +1,13 @@
 from distutils.core import setup
 
 setup(
-  name = 'phantom-rest-client',
-  packages = ['phantom-rest-client'], # this must be the same as the name above
-  version = '0.1.0',
+  name = 'phantomrestclient',
+  packages = ['phantomrestclient'], # this must be the same as the name above
+  version = '0.1.1',
   description = 'A wrapper library around the Phantom Rest API.',
   author = 'Joe Ingalls',
   author_email = 'joe.ingalls@optiv.com',
-  url = 'https://bitbucket.org/jingalls/phantom-rest-client', # use the URL to the github repo
+  url = 'https://bitbucket.org/jingalls/phantomrestclient', # use the URL to the github repo
   # download_url = 'https://github.com/peterldowns/mypackage/tarball/0.1', # I'll explain this in a second
   keywords = ['phantom', 'phantomcyber'], # arbitrary keywords
   classifiers = [

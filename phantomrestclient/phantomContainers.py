@@ -21,7 +21,7 @@ class _PhantomContainers(_BasePhantom):
         if container_id is None:
             raise ValueError("container_id is required")
 
-        url = os.path.join(self.endpoint_url, container_id)
+        url = os.path.join(self.endpoint_url, str(container_id))
         return self.__make_rest_request__(url, "GET")
 
     def create(self, data):

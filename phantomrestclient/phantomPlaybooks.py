@@ -9,6 +9,12 @@ class _PhantomPlaybooks(_BasePhantom):
         _BasePhantom.__init__(self, host, username, password)
         self.endpoint_url = os.path.join(self.host, "playbook_run")
 
+    def exists(self, playbook_name):
+        url = "%s?_filter_name__contains='%s'" % (os.path.join(self.host, "playbook"),
+                                                  playbook_name)
+        resp = self.__make_rest_request__(url, "GET")
+        return resp["count"] > 0
+
     def trigger(self, playbook_id, container_id):
         data = dict(
             container_id=container_id,
@@ -34,3 +40,8 @@ class _PhantomPlaybooks(_BasePhantom):
         if query is not None:
             endpoint_url += "&%s" % query
         return self.__make_rest_request__(endpoint_url, "GET")
+
+    def get_app_run_results(self, app_run_id):
+        endpoint_url = os.path.join(self.host, "app_run/%s" % app_run_id)
+        return self.__make_rest_request__(endpoint_url, "GET")
+

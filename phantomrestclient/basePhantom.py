@@ -1,3 +1,4 @@
+import os
 import json
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning, InsecurePlatformWarning, SNIMissingWarning
@@ -33,4 +34,8 @@ class _BasePhantom:
         if response.status_code == 200:
             return response.json()
         else:
-            return None
+            return response
+
+    def get_build_action(self):
+        url = os.path.join(self.host, "build_action")
+        return self.__make_rest_request__(url, "GET")
